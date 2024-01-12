@@ -1,0 +1,17 @@
+plugins {
+    id 'java-library'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    implementation(libs.socket.io) {
+        exclude group: 'org.json', module: 'json'
+    }
+
+    implementation libs.dagger
+    annotationProcessor libs.dagger.compiler
+}

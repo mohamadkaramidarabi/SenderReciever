@@ -1,0 +1,58 @@
+plugins {
+    alias(libs.plugins.androidApplication)
+}
+
+android {
+    namespace 'ir.karami.sedad.receiver.app'
+    compileSdk libs.versions.compileSdk.get().toInteger()
+
+    defaultConfig {
+        applicationId "ir.karami.sedad.receiver.app"
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.dagger
+    annotationProcessor libs.dagger.compiler
+
+    implementation libs.rx.java
+    implementation libs.rx.android
+
+    implementation projects.receiver.di
+    implementation projects.receiver.data.source.database
+    implementation projects.receiver.data.repository
+    implementation projects.receiver.domain
+
+
+    implementation projects.common.models
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}

@@ -1,0 +1,37 @@
+[versions]
+agp = "8.4.0-alpha03"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+appcompat = "1.6.1"
+material = "1.11.0"
+activity = "1.8.2"
+compileSdk = "34"
+targetSdk = "27"
+minSdk = "24"
+appVersion = "1"
+appVersionName = "0.1"
+applicationId = "ir.karami.sadadtest"
+dagger = "2.49"
+room = "2.6.1"
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
+
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-rxjava3 = { group = "androidx.room", name = "room-rxjava3", version.ref = "room" }
+rx-android = { group = "io.reactivex.rxjava3", name = "rxandroid", version = "3.0.2" }
+rx-java = { group = "io.reactivex.rxjava3", name = "rxjava", version = "3.1.5" }
+socket-io = "'io.socket:socket.io-client:1.0.0'"
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+

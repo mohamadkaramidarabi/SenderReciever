@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="state"
+            type="ir.karami.sedad.receiver.app.main.MainViewModel.State.ItemState" />
+    </data>
+    <com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:padding="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:text="@{state.value}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="@{state.synced ? `Synced` : `Waiting to sync`}"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_height="wrap_content"/>
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

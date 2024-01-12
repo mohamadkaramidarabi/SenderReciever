@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="state"
+            type="ir.karami.sedad.receiver.app.main.MainViewModel.State" />
+        <import type="android.view.View"/>
+    </data>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".main.MainActivity">
+        <TextView
+            android:visibility="@{state.itemStates.empty ? View.VISIBLE : View.GONE}"
+            android:id="@+id/emptyTv"
+            android:padding="8dp"
+            android:text="There is no item to show!!"
+            style="@style/TextAppearance.Material3.HeadlineLarge"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingTop="32dp"
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</layout>
