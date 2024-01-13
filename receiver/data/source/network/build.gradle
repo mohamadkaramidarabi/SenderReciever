@@ -33,9 +33,9 @@ android {
 
 
 dependencies {
-//    implementation(libs.socket.io) {
-//        exclude group: 'org.json', module: 'json'
-//    }
+    implementation(libs.socket.io) {
+        exclude group: 'org.json', module: 'json'
+    }
 
     implementation libs.dagger
     annotationProcessor libs.dagger.compiler

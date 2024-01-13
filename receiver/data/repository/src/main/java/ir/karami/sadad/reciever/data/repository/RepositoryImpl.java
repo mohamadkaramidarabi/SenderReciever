@@ -1,13 +1,12 @@
 package ir.karami.sadad.reciever.data.repository;
 
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import javax.inject.Inject;
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.karami.sadad.receiver.data.source.database.Info;
@@ -16,7 +15,7 @@ import ir.karami.sadad.receiver.data.source.network.NetworkApi;
 import ir.karami.sadad.receiver.domain.CacheData;
 import ir.karami.sadad.receiver.domain.Repository;
 
-public class RepositoryImpl implements Repository {
+class RepositoryImpl implements Repository {
     InfoDao infoDao;
     NetworkApi networkApi;
 
@@ -59,6 +58,7 @@ public class RepositoryImpl implements Repository {
                     infos.forEach(info -> {
                         infoDao.updateSent(info.id).subscribe();
                     });
+                    networkApi.sendMessages(infos.stream().map(info -> info.cachedValue));
                 })
                 .subscribe();
 
