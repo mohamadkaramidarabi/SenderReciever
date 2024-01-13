@@ -17,7 +17,6 @@ public class App extends Application {
     private static final long INTERVAL = 60 * 1000;
 
 
-    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     @Override
     public void onCreate() {
         super.onCreate();
@@ -25,6 +24,10 @@ public class App extends Application {
                 .application(this)
                 .build();
         scheduleAlarm();
+        startInfoBroadcast();
+    }
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
+    private void startInfoBroadcast() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.RECEIVER_ACTION_NAME);
         InfoBroadcastReceiver infoBroadcastReceiver = new InfoBroadcastReceiver();
