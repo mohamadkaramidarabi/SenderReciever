@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Sender App</string>
+    <string name="sender_app_title">This app is using to send some custom values to receiver app.</string>
+    <string name="text_hint">text</string>
+    <string name="message_hint">enter your message</string>
+    <string name="btn_text">Send values to second app</string>
 </resources>

@@ -18,7 +18,6 @@ public class PeriodicAlarmReceiver extends BroadcastReceiver {
     @SuppressLint("UnsafeProtectedBroadcastReceiver")
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("onReceive", System.currentTimeMillis() + "");
         ((App) context.getApplicationContext()).appComponent.inject(this);
         repository.sync();
 

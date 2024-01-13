@@ -14,7 +14,7 @@ import ir.karami.sedad.receiver.app.di.DaggerAppComponent;
 
 public class App extends Application {
     public AppComponent appComponent;
-    private static final long INTERVAL = 60 * 1000;
+    private static final long INTERVAL = 5 * 60 * 1000;
 
 
     @Override

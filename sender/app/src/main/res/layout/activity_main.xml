@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This app is used to send some costum values to another app"
+            android:text="@string/sender_app_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -20,13 +20,13 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginTop="16dp"
-            android:hint="text"
+            android:hint="@string/text_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt"
                 android:layout_width="match_parent"
-                android:hint="enter your message"
+                android:hint="@string/message_hint"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -34,7 +34,7 @@
             android:id="@+id/btn"
             android:layout_marginTop="16dp"
             style="@style/ThemeOverlay.Material3.Button.TextButton"
-            android:text="Send values to second app"
+            android:text="@string/btn_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
