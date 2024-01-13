@@ -12,26 +12,18 @@ import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import ir.karami.sadad.receiver.data.source.database.Info;
 import ir.karami.sadad.receiver.data.source.database.InfoDao;
+import ir.karami.sadad.receiver.data.source.network.NetworkApi;
 import ir.karami.sadad.receiver.domain.CacheData;
 import ir.karami.sadad.receiver.domain.Repository;
 
 public class RepositoryImpl implements Repository {
     InfoDao infoDao;
+    NetworkApi networkApi;
 
     @Inject
-    public RepositoryImpl(InfoDao appDatabase) {
+    public RepositoryImpl(InfoDao appDatabase,NetworkApi networkApi) {
         this.infoDao = appDatabase;
-        infoDao.insertData(new Info("test",false));
-        infoDao.getAllFlow()
-                .distinctUntilChanged()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext( infos -> {
-                    infos.forEach(info -> {
-                        Log.d("data", info.cachedValue + "  " + info.id);
-                    });
-                })
-                .subscribe();
+        this.networkApi = networkApi;
     }
     @Override
     public void save(CacheData data) {
