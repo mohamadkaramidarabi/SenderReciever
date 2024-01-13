@@ -4,26 +4,25 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 import javax.inject.Inject;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import ir.karami.sadad.receiver.data.source.database.AppDatabase;
 import ir.karami.sadad.receiver.data.source.database.Info;
+import ir.karami.sadad.receiver.data.source.database.InfoDao;
 import ir.karami.sadad.receiver.domain.CacheData;
 import ir.karami.sadad.receiver.domain.Repository;
 
 public class RepositoryImpl implements Repository {
-    AppDatabase appDatabase;
+    InfoDao infoDao;
 
     @Inject
-    public RepositoryImpl(AppDatabase appDatabase) {
-        this.appDatabase  = appDatabase;
-        appDatabase.getInfoDao().insertData(new Info("test",false));
-        appDatabase.getInfoDao().getAllFlow()
+    public RepositoryImpl(InfoDao appDatabase) {
+        this.infoDao = appDatabase;
+        infoDao.insertData(new Info("test",false));
+        infoDao.getAllFlow()
                 .distinctUntilChanged()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -36,7 +35,7 @@ public class RepositoryImpl implements Repository {
     }
     @Override
     public void save(CacheData data) {
-        appDatabase.getInfoDao().insertData(new Info(data.value))
+        infoDao.insertData(new Info(data.value))
                 .subscribeOn(Schedulers.io())
                 .subscribe();
     }
@@ -44,7 +43,7 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public Flowable<List<CacheData>> getCachedValues() {
-        return appDatabase.getInfoDao().getAllFlow().map(this::mapper);
+        return infoDao.getAllFlow().map(this::mapper);
     }
 
     private List<CacheData> mapper(List<Info> infos) {
@@ -61,12 +60,12 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void sync() {
-        appDatabase.getInfoDao().getUnSyncedInfo()
+        infoDao.getUnSyncedInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .doOnSuccess(infos -> {
                     infos.forEach(info -> {
-                        appDatabase.getInfoDao().updateSent(info.id).subscribe();
+                        infoDao.updateSent(info.id).subscribe();
                     });
                 })
                 .subscribe();

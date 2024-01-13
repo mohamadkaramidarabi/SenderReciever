@@ -13,7 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
                 @AutoMigration(from = 1, to = 2, spec = AppDatabase.CachedValueColumnNameMigration.class)
         }
 )
-public abstract class AppDatabase extends RoomDatabase {
+abstract class AppDatabase extends RoomDatabase {
     public abstract InfoDao getInfoDao();
 
     @RenameColumn(fromColumnName = "string", toColumnName = "cached_value", tableName = "info")

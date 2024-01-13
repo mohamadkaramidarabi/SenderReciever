@@ -47,6 +47,7 @@ dependencies {
 
     implementation projects.receiver.di
     implementation projects.receiver.data.source.database
+    implementation projects.receiver.data.source.network
     implementation projects.receiver.data.repository
     implementation projects.receiver.domain
 

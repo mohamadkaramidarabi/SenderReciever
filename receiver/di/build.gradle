@@ -31,9 +31,7 @@ dependencies {
 
     implementation projects.receiver.domain
     implementation projects.receiver.data.repository
-
-    implementation libs.room.runtime
-    annotationProcessor libs.room.compiler
+    implementation projects.receiver.data.source.network
 
     implementation projects.receiver.data.source.database
     implementation projects.common.models
